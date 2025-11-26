@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enduro Xtreme | La Aventura Comienza</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&family=Roboto:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary: #ff6b00;
+        --dark-bg: #121212;
+        --card-bg: #1e1e1e;
+        --text-light: #f5f5f5;
+        --text-dim: #aaaaaa;
+        --transition: all 0.3s ease;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: var(--dark-bg);
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Teko", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      header {
+        background: rgba(18, 18, 18, 0.95);
+        padding: 1rem 5%;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--primary);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .nav-links a {
+        margin-left: 20px;
+        font-weight: bold;
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover {
+        color: var(--primary);
+      }
+
+      .hero {
+        height: 80vh;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1558981806-ec527fa84c3d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 20px;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 600px;
+        margin-bottom: 30px;
+      }
+
+      .btn-cta {
+        padding: 12px 30px;
+        background-color: var(--primary);
+        color: #fff;
+        font-weight: bold;
+        border-radius: 5px;
+        text-transform: uppercase;
+        transition: var(--transition);
+        border: 2px solid var(--primary);
+      }
+
+      .btn-cta:hover {
+        background-color: transparent;
+        color: var(--primary);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 50px;
+        color: var(--primary);
+      }
+
+      .grid-motos {
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .moto-card {
+        background-color: var(--card-bg);
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .moto-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(255, 107, 0, 0.2);
+      }
+
+      .card-image {
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .moto-card:hover .card-image img {
+        transform: scale(1.1);
+      }
+
+      .card-content {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .moto-title {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .moto-desc {
+        color: var(--text-dim);
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+      }
+
+      .specs {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        border-top: 1px solid #333;
+        padding-top: 10px;
+      }
+
+      .specs span {
+        color: var(--primary);
+      }
+
+      .btn-vermas {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+        border: 1px solid var(--text-light);
+        color: var(--text-light);
+        border-radius: 5px;
+        transition: var(--transition);
+        font-weight: bold;
+        cursor: pointer;
+        background: transparent;
+      }
+
+      .btn-vermas:hover {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+
+      /* --- FOOTER --- */
+      footer {
+        background-color: #000;
+        text-align: center;
+        padding: 40px 20px;
+        margin-top: 80px;
+        color: var(--text-dim);
+      }
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .logo {
+          font-size: 1.5rem;
+        }
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+    <script>
+      function ira(x) {
+        if (x === 1) {
+          window.location.href =
+            "https://www.aktmotos.com/moto-internacional/AK200BRNICARAGUA?language=es&pais=420";
+        } else if (x === 2) {
+          window.location.href = "https://yamahanic.com/tienda/ag-200f/";
+        } else if (x === 3) {
+          window.location.href = "https://genesisnic.com/tienda/sx3-250-4v/";
+        } else if (x === 4) {
+          window.location.href =
+            "https://adventure-motorcycling.com/tag/honda-xr250-tornado/";
+        } else if (x === 5) {
+          window.location.href =
+            "https://depagmotors.com/en/motos-honda/doble-proposito/sahara-300/";
+        } else if (x === 6) {
+          window.location.href =
+            "https://www.motofichas.com/marcas/yamaha/tenere-700";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">ENDURO<span style="color: #fff">NICA</span></div>
+      <nav class="nav-links">
+        <a href="#">Contacto</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Mi top motos</h1>
+      <p>
+        En esta lista veran las mejores motos de enduro que he probado y cuales
+        son sus caracteristicas
+      </p>
+      <a href="#catalogo" class="btn-cta">Ver Motos</a>
+    </section>
+
+    <div class="container" id="catalogo">
+      <h2 class="section-title">De menor a mayor cilindrada</h2>
+
+      <div class="grid-motos">
+        <article class="moto-card">
+          <div class="card-image">
+            <img src="akt150.jpg" alt="KTM 450" />
+          </div>
+          <div class="card-content">
+            <div>
+              <h3 class="moto-title">AKT TT 150-200</h3>
+              <p class="moto-desc">
+                Una de las primeras moto que conduci, al ser cilindrada 150 pues
+                si daba bien, la pongo en la lista porque a pesar de la
+                cilindrada tenia buen torque 10.9NM
+              </p>
+              <div class="specs">
+                <span>149cc</span>
+                <span>120 kg</span>
+                <span>4 Tiempos</span>
+                <span>11.1hp- 8500RPM</span>
+              </div>
+            </div>
+            <button class="btn-vermas" onclick="ira(1)">Ver Detalles</button>
+          </div>
+        </article>
+
+        <article class="moto-card">
+          <div class="card-image">
+            <img src="ag200.jpg" />
+          </div>
+          <div class="card-content">
+            <div>
+              <h3 class="moto-title">Yamaha ag200</h3>
+              <p class="moto-desc">
+                Una de las mejores, llamada las mama chanchona, porque fue
+                creada para el campo, con full equipaje de hierro y un torque y
+                potencia que mezcladas bajas RPM han sido de las mejores
+              </p>
+              <div class="specs">
+                <span>196cc</span>
+                <span>135 kg</span>
+                <span>4 Tiempos</span>
+                <span>16.5hp- 6500RPM</span>
+              </div>
+            </div>
+            <button class="btn-vermas" onclick="ira(2)">Ver Detalles</button>
+          </div>
+        </article>
+
+        <article class="moto-card">
+          <div class="card-image">
+            <img src="SX34V.jpg" alt="Husqvarna" />
+          </div>
+          <div class="card-content">
+            <div>
+              <h3 class="moto-title">Genesis SX3-250 4V</h3>
+              <p class="moto-desc">
+                Una bestialidad el salto de potencia y torque es altisima un
+                poco alta para mi, llego de puntillas, para enduro se me hace un
+                poco dificil pero es muy controlable al acostumbrarse
+              </p>
+              <div class="specs">
+                <span>250cc</span>
+                <span>145 kg</span>
+                <span>4 Tiempos</span>
+                <span>24.1hp- 7500RPM</span>
+              </div>
+            </div>
+            <button class="btn-vermas" onclick="ira(3)">Ver Detalles</button>
+          </div>
+        </article>
+        <article class="moto-card">
+          <div class="card-image">
+            <img src="tornado.jpg" alt="Enduro Bike" />
+          </div>
+          <div class="card-content">
+            <div>
+              <h3 class="moto-title">Honda Tornado</h3>
+              <p class="moto-desc">
+                A la mano de su hermana china la SX3, es una de las mejores para
+                enduro, la pongo arriba de la otra debido a su calidad en
+                materiales importantes como suspencion y kit de arrastre en
+                potencia similar a la sx3, pero mas confiable
+              </p>
+              <div class="specs">
+                <span>250cc</span>
+                <span>134 kg</span>
+                <span>4 Tiempos</span>
+                <span>23.1hp- 7500RPM</span>
+              </div>
+            </div>
+            <button class="btn-vermas" onclick="ira(4)">Ver Detalles</button>
+          </div>
+        </article>
+        <article class="moto-card">
+          <div class="card-image">
+            <img src="sahara.jpg" alt="Husqvarna" />
+          </div>
+          <div class="card-content">
+            <div>
+              <h3 class="moto-title">Honda sahara 300</h3>
+              <p class="moto-desc">
+                Una bestialidad para el off-road, pero para enduro, un poco de
+                miedo debido a que su diseño se basa en terrenos deficiles, pero
+                como tierra, agua, subidas etc, en terminos de lodo, piedras
+                etc, queda un poco corta al ser pesada, pero el torque y
+                velocidad final en carretera es una bellesa
+              </p>
+              <div class="specs">
+                <span>293cc</span>
+                <span>159 kg</span>
+                <span>4 Tiempos</span>
+                <span>24.4hp- 7500RPM</span>
+              </div>
+            </div>
+            <button class="btn-vermas" onclick="ira(5)">Ver Detalles</button>
+          </div>
+        </article>
+        <article class="moto-card">
+          <div class="card-image">
+            <img src="tenere.jpg" alt="Husqvarna" />
+          </div>
+          <div class="card-content">
+            <div>
+              <h3 class="moto-title">Yamaha tenere 700</h3>
+              <p class="moto-desc">
+                Una clase alta entre todos los anteriores, el salto de 300, a
+                700, con solo una meniadita al acelerador y sale disparado para
+                enduro, no la recomiendo, de la misma forma que la sahara es muy
+                pesada , pero su potencia y torque da lo nesecario para hacerlo
+                ademas de su buen sistema de suspencion para caminos horrendos
+                como los de managua
+              </p>
+              <div class="specs">
+                <span>689cc</span>
+                <span>208 kg</span>
+                <span>4 Tiempos</span>
+                <span>73.4hp- 9000RPM</span>
+              </div>
+            </div>
+            <button class="btn-vermas" onclick="ira(6)">Ver Detalles</button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2024 Enduro Nica. Todos los derechos reservados.</p>
+      <p>Hecho con pasión por las motos.</p>
+    </footer>
+  </body>
+</html>
